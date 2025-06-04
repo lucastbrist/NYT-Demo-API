@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>NYT Article Search</title>
+    <div th:replace="fragments :: header"/>
+</head>
+<body>
+<div th:replace="fragments :: navigation"/>
+<div class="container">
+    <div class="bg-light p-4 rounded m-2">
+        <h1 class="display-4 text-center mb-4">NYT Article Search</h1>
+        <p class="lead text-center mb-4">
+            Search for news articles using the New York Times Article Search API.
+        </p>
+        <form th:action="@{/search}" method="post" class="mb-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <input type="text" name="searchText" class="form-control form-control-lg" placeholder="Enter keywords, topics, or phrases..." required>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary btn-lg">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div th:replace="fragments :: footer"/>
+</body>
+</html>

@@ -12,7 +12,9 @@ import java.util.List;
 public class Doc {
     @JsonProperty("web_url")
     private String webUrl;
+    private String snippet;
     private Headline headline;
     private Byline byline;
-    private List<Multimedia> multimedia;
+    private String source;
+    private Multimedia multimedia;
 }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>NYT Article Search Results</title>
+    <div th:replace="fragments :: header"/>
+</head>
+<body>
+<div th:replace="fragments :: navigation"/>
+<div class="container">
+    <div class="bg-light p-4 rounded m-2">
+        <h1 class="display-4 text-center mb-4">Search Results</h1>
+        <p class="lead text-center mb-4">
+        </p>
+        <div th:if="${#lists.isEmpty(articleList)}">
+            <p class="text-center text-muted">No articles found for your search.</p>
+        </div>
+        <div th:if="${!#lists.isEmpty(articleList)}">
+            <div class="row">
+                <div class="col-md-12" th:each="doc : ${articleList}">
+                    <div class="card mb-4">
+                        <div class="row g-0">
+                            <div class="col-md-3" th:if="${doc.multimedia != null}">
+                                <img th:src="@{${doc.multimedia.thumbnail.url}}" class="img-fluid rounded-start" alt="Article Image"/>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a th:href="@{${doc.webUrl}}" th:text="${doc.headline.main}" target="_blank"></a>
+                                    </h5>
+                                    <p class="card-text" th:text="${doc.snippet}"></p>
+                                    <p class="card-text">
+                                        <small class="text-muted">
+                                            <span th:if="${doc.byline != null and doc.byline.original != null}" th:text="${doc.byline.original}"></span>
+                                        </small>
+                                    </p>
+                                    <a th:href="@{${doc.webUrl}}" class="btn btn-primary btn-sm" target="_blank">Read Full Article</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- /each doc -->
+            </div> <!-- /row -->
+        </div>
+    </div>
+</div>
+<div th:replace="fragments :: footer"/>
+</body>
+</html>

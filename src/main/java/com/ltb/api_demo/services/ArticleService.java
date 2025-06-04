@@ -49,6 +49,7 @@ public class ArticleService {
 
     }
 
+    // Null checks and empty checks, then returns true if the article has media
     public boolean checkForMedia(Article article) {
 
         if (article.getMedia() != null && !article.getMedia().isEmpty()) {
@@ -73,6 +74,22 @@ public class ArticleService {
         }
 
         return results;
+
+    }
+
+    // Null checks and empty checks, then returns true if the doc has media
+    public boolean checkForMediaSearch(Doc doc) {
+
+        if (doc.getMultimedia() != null) {
+            return doc.getMultimedia().getThumbnail() != null &&
+                    !doc.getMultimedia().getThumbnail().getUrl().isEmpty();
+        }
+        return false;
+    }
+
+    public void setThumbnailsSearch(List<Doc> docs) {
+
+        // ???
 
     }
 
